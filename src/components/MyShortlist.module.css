@@ -1,0 +1,121 @@
+.container{
+    background-color: white;
+    /* height: 700px; */
+    width: 77%;
+     box-sizing: border-box;
+     margin: auto;
+     padding: 25px;
+     border-radius: 5px;
+}
+.productContainer{
+ 
+  /* background-color: green; */
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  row-gap: 25px;
+  column-gap: 10px;
+
+}
+.card{
+
+    height: 420px;
+     background-color: white;
+     width: 233px;
+     border-radius: 4px;
+     margin-left: 20px;
+}
+.card:hover{
+
+}
+
+.card img{
+    height: 260px;
+    width: 233px;
+}
+.tiltediv{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 4px;
+}
+.buttondiv{
+    display: flex;
+     justify-content: space-between;
+     padding-right: 5px;
+}
+.movetocartbtn{
+   
+    background-color: #FF7043;
+    border: none;
+    font-size: 14px;
+    font-weight: 550;
+    color: white;
+    padding-left: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.title{
+    font-size: 13px;
+    color: #424242;
+    margin-top: 10px;
+    font-weight: 450;
+}
+
+.prize{
+    font-size: 14px;
+    font-weight: 700;
+    color: #424242;
+}
+.mrps{
+    font-size: 12px;
+    color: #757575;
+}
+.dleicondiv{
+    padding:6px 13px 6px 13px;
+     border-radius: 5px;
+     cursor: pointer;
+     border: 0.1px solid rgb(147, 147, 147);
+    
+}
+
+
+
+.emptydiv{
+   margin: auto;
+    display: flex;
+    flex-direction: column;
+   height: 450px;
+    /* align-items: center;
+    justify-content: center; */
+}
+.emptydiv img{
+   /* width: 400px;
+   height: 200px; */
+}
+.emptydiv span{
+   
+    font-size: 20px;
+    font-weight: 500;
+    color: #424242;
+    margin: auto;
+    margin-top: -130px;
+}
+.emptydiv button{
+    background-color: #FF7043;
+    border: none;
+    font-size: 16px;
+    font-weight: 550;
+    color: white;
+    padding-left: 3px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 25%;
+    margin-top: 20px;
+    margin: auto;
+
+}

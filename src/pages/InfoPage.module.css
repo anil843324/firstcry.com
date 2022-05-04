@@ -1,0 +1,160 @@
+.BigContainer{
+   
+    display: flex;
+    box-sizing: border-box;
+    margin: 0px 47px;
+    margin-top: 10px;
+    gap: 20px;
+}
+.left{
+
+    height: 700px;
+    width: 30%;
+    margin-right: 5px;
+   ;
+    /* background-color: antiquewhite; */
+}
+
+.right{
+
+    height: 700px;
+    width: 70%;
+    /* background-color: orange; */
+
+}
+.btndiv{
+    display: flex;
+     justify-content: space-between;
+     margin-top: 5px;
+}
+.cartbtn{
+    background-color: #ff7043;
+    border: none;
+    width: 48%;
+   height: 50px;
+   color: white;
+   font-weight: bold;
+   border-radius: 4px;
+   font-size: 16px;
+   cursor: pointer;
+}
+.shortlistbtn{
+    width: 48%;
+    height: 50px;
+    border-radius: 4px;
+    border: 0.5px solid #616161;
+    font-size: 16px;
+    cursor: pointer;
+    color: #616161;
+    font-weight: 600;
+}
+.titlediv{
+}
+.titlediv p{
+    font-size: 20px;
+    font-weight: 700;
+    color: #424242;
+    margin: 0px 0px 9px;
+}
+.titlediv span{
+     
+    margin: 0px 10px 0px 0px;
+    color: #616161;
+    font-size: 14px;
+    font-weight: 500;
+}
+.hr{
+
+ margin-top: 30px;
+ margin-bottom: 20px;
+ background-color: gray;
+     
+}
+.prizediv{
+   display: flex;
+   flex-direction: column;
+}
+.child_prizediv{
+    display: flex;
+    gap: 7px;
+}
+.prize{
+
+    color: #003257;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px 1px 0px 0px;
+}
+.mrp_title{
+ color: #757575;
+ font-size: 20px;
+ font-weight: 400;
+
+}
+.mrp{
+    color: #757575;
+ font-size: 20px;
+ font-weight: 400;
+ text-decoration: line-through;
+
+}
+.offer{
+
+ color: #FF7043;
+ font-size: 18px;
+ font-weight: 400;
+ margin: 0px 7px 0px 0px;
+     
+}
+.taxtesmrp{
+ 
+    color: #616161;
+    font-size: 13px;
+    margin: -2px 0px 15px;
+}
+.Clubdiv{
+    height: 50px;
+    width: 330px;
+    border-radius: 5px;
+    border: 1px solid #757575;
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+}
+.joinClub{
+    color: #FF7043;
+    font-size: 13px;
+    font-weight: 400;
+   cursor: pointer;
+}
+.clubprizesmalldiv{
+  display: flex;
+  flex-direction: column;
+   /* background-color: red;    */
+}
+.clubprizediv{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.img{
+    height: 13px;
+
+}
+.clubTitle{
+    color: #2979FF;
+    font-size: 16px;
+    font-weight: 400;
+}
+.clubTitlepirze{
+    color: #003257;
+    font-size: 16px;
+    font-weight: bold;
+}
+.savingclub{
+    margin-top: 3px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: #424242;
+}
