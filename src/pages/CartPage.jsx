@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getCartItems } from "../redux/actions";
+import { getCartItems ,getShortItems } from "../redux/actions";
 import { ImLocation } from "react-icons/im";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -39,6 +39,50 @@ const CartPage = () => {
       .then((response) => response.json())
       .then(() => dispatch(getCartItems()));
   };
+
+//  move to short list 
+
+const handleMove=(img,title,prize,mrp,club_p,id)=>{
+        
+  let obj={
+    img,
+    title,
+    prize,
+    mrp,
+    club_p
+  }
+   console.log(obj)
+ 
+    fetch("http://localhost:8080/shortList", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    }).then( ()=>dispatch(getCartItems(),handleDelete(id,dispatch(getShortItems()))));
+     alert("added to shortlist")    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -132,12 +176,18 @@ const CartPage = () => {
                           className={style_c.icondel_heart}
                           onClick={() => handleDelete(ele.id)}
                         />
-                        <span>REMOVE</span>
+                        <span
+                        
+                        >REMOVE</span>
                       </span>
                       <div></div>
                       <span className={style_c.deletespan}>
-                        <AiOutlineHeart className={style_c.icondel_heart} />
-                        <span>MOVE TO SHORTLIST</span>
+                        <AiOutlineHeart className={style_c.icondel_heart}
+                         onClick={()=> handleMove(ele.img,ele.title,ele.prize,ele.mrp,ele.club_p,ele.id)}
+                         />
+                        <span
+                        
+                        >MOVE TO SHORTLIST</span>
                       </span>
                     </div>
                     <hr className={style_c.hrline} />

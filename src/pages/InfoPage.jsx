@@ -4,7 +4,7 @@ import style_i from "./InfoPage.module.css"
 import {AiOutlineRight} from "react-icons/ai"
 import {getCartItems ,getShortItems } from "../redux/actions/index";
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 const InfoPage = () => {
 
   const dispatch=useDispatch()
@@ -12,8 +12,18 @@ const InfoPage = () => {
    const {id}=useParams()
    console.log(id)
    const [data,setData]=useState({})
-//  add data in cart
+  
+  // get to cart to check is avialbe or not in cart
+  const [cartData,setCartData]=useState([]);
+   
+  useEffect(() => {
+    fetch("http://localhost:8080/cart")
+      .then((response) => response.json())
+      .then((Data)=>setCartData(Data))
+     
+  }, []);
 
+   console.log(cartData)
 
  //  add to data in shortlist
 
@@ -27,8 +37,12 @@ const InfoPage = () => {
  
 // add data 
   //  add data in cart
-  const handleCart = () => {
-  
+  const handleCart = (index) => {
+    
+    let x= cartData.find((ele)=> ele.id===index )
+    if(x){
+      alert("already in cart")
+    }else{
 
    fetch("http://localhost:8080/cart", {
      method: "POST",
@@ -40,11 +54,15 @@ const InfoPage = () => {
      dispatch(getCartItems());
    });
    alert("added in cart");
+  }
  };
 
  //  add to data in shortlist
- const handleShortList = () => {
-  
+ const handleShortList = (index) => {
+  let x= cartData.find((ele)=> ele.id===index )
+  if(x){
+    alert("already in shortList")
+  }else{
 
    fetch("http://localhost:8080/shortList", {
      method: "POST",
@@ -56,11 +74,8 @@ const InfoPage = () => {
      dispatch(getShortItems());
    });
    alert("added in shortList");
+  }
  };
-
-
- 
-
 
 
 
@@ -79,8 +94,8 @@ const InfoPage = () => {
                <div className={style_i.btndiv}>
                
                    
-                  <button className={style_i.cartbtn} onClick={ handleCart}  >ADD TO CART</button>
-                  <button className={style_i.shortlistbtn} onClick={handleShortList}> <BsHeart/> SHORTLIST</button>
+                  <button className={style_i.cartbtn} onClick={ ()=> {handleCart(data.id)}}  >ADD TO CART</button>
+                  <button className={style_i.shortlistbtn} onClick={()=>{handleShortList(data.id)}}> <BsHeart/> SHORTLIST</button>
 
                </div>
 

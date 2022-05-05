@@ -20,7 +20,7 @@ const Products = () => {
   const dispatch = useDispatch();
 
   //  add data in cart
-  const handleCart = (img, title, size, prize, mrp, club_p) => {
+  const handleCart = (img, title, size, prize, mrp, club_p,index) => {
     let obj = {
       img,
       title,
@@ -29,6 +29,10 @@ const Products = () => {
       mrp,
       club_p,
     };
+    let x= products.find((ele)=> ele.id===index )
+  if(x){
+    alert("already in cart")
+  }else{
 
     fetch("http://localhost:8080/cart", {
       method: "POST",
@@ -40,10 +44,11 @@ const Products = () => {
       dispatch(getCartItems());
     });
     alert("added in cart");
+  }
   };
 
   //  add to data in shortlist
-  const handleShortList = (img, title, size, prize, mrp, club_p) => {
+  const handleShortList = (img, title, size, prize, mrp, club_p,index) => {
     let obj = {
       img,
       title,
@@ -52,7 +57,10 @@ const Products = () => {
       mrp,
       club_p,
     };
-
+    let x= products.find((ele)=> ele.id===index )
+    if(x){
+      alert("already in shortlist")
+    }else{
     fetch("http://localhost:8080/shortList", {
       method: "POST",
       headers: {
@@ -63,6 +71,7 @@ const Products = () => {
       dispatch(getShortItems(obj));
     });
     alert("added in shortList");
+  }
   };
 
   //  get data from products
@@ -205,7 +214,8 @@ const Products = () => {
                         ele.size,
                         ele.prize,
                         ele.mrp,
-                        ele.club_p
+                        ele.club_p,
+                        ele.id
                       )
                     }
                   >
@@ -220,7 +230,8 @@ const Products = () => {
                         ele.size,
                         ele.prize,
                         ele.mrp,
-                        ele.club_p
+                        ele.club_p,
+                        ele.id
                       )
                     }
                   >
