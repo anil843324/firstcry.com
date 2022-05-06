@@ -4,7 +4,7 @@ import style_i from "./InfoPage.module.css"
 import {AiOutlineRight} from "react-icons/ai"
 import {getCartItems ,getShortItems } from "../redux/actions/index";
 import { useParams } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 const InfoPage = () => {
 
   const dispatch=useDispatch()
@@ -14,16 +14,20 @@ const InfoPage = () => {
    const [data,setData]=useState({})
   
   // get to cart to check is avialbe or not in cart
-  const [cartData,setCartData]=useState([]);
-   
+  const items = useSelector((state) => state.cartShortReducer.cartList);
+  const items2 = useSelector((state) => state.cartShortReducer.shortList);
   useEffect(() => {
-    fetch("http://localhost:8080/cart")
-      .then((response) => response.json())
-      .then((Data)=>setCartData(Data))
-     
+    dispatch(getCartItems());
   }, []);
+  useEffect(() => {
+    dispatch(getShortItems());
+  }, []);
+  
 
-   console.log(cartData)
+   
+    console.log(items)
+    console.log(items2)
+ 
 
  //  add to data in shortlist
 
@@ -38,32 +42,36 @@ const InfoPage = () => {
 // add data 
   //  add data in cart
   const handleCart = (index) => {
-    
-    let x= cartData.find((ele)=> ele.id===index )
+     
+     let x=items.find((ele) =>ele.id===index)
+
     if(x){
       alert("already in cart")
     }else{
+      fetch("http://localhost:8080/cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then(() => {
+        dispatch(getCartItems());
+      });
+      alert("added in cart");
+    }
 
-   fetch("http://localhost:8080/cart", {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify(data),
-   }).then(() => {
-     dispatch(getCartItems());
-   });
-   alert("added in cart");
-  }
+   
+  
  };
 
  //  add to data in shortlist
  const handleShortList = (index) => {
-  let x= cartData.find((ele)=> ele.id===index )
+
+  let x=items2.find((ele) =>ele.id===index)
+
   if(x){
     alert("already in shortList")
   }else{
-
    fetch("http://localhost:8080/shortList", {
      method: "POST",
      headers: {

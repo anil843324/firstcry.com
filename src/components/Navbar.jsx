@@ -23,8 +23,7 @@ const Navbar = () => {
       dispatch(getCartItems());
     }, []);
 
-    
-
+      console.log(items)
   
   return (
    <>

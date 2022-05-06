@@ -1,12 +1,12 @@
 
-import cartShortReducer from "../reducers/index"
+import cartShortReducer from "../reducers"
 
 import { combineReducers } from "redux"
 
 
-const rootReducer=combineReducers({
+const rootReducerf=combineReducers({
     
     cartShortReducer
 })
 
-export default rootReducer
+export default rootReducerf

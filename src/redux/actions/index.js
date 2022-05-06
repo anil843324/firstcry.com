@@ -1,7 +1,4 @@
-export const addItems = (data) => ({
-    type: "ADD_CART_ITEMS",
-    payload: data,
-  });
+
 
   
 
@@ -13,7 +10,7 @@ export const getItems = (listData) => ({
 
 
 //  get data for json
-export const getCartItems = () => {
+export const getCartItems =  () => {
   return (dispatch) => {
     fetch("http://localhost:8080/cart")
       .then((response) => response.json())
@@ -23,21 +20,14 @@ export const getCartItems = () => {
 
 //  for shortlsit item to get data
 
-export const addShortListItems = (data) => ({
-  type: "ADD_SHORT_LIST_ITEMS",
-  payload: data,
-});
-
-
-
-// data fro json to stroe list
+// this return object
 export const getShortListItems = (listData) => ({
 type: "GET_SHORT_LIST_ITEMS",
 payload: listData,
 });
 
 
-//  get data for json
+//  this return function
 export const getShortItems = () => {
 return (dispatch) => {
   fetch("http://localhost:8080/shortList")

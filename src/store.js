@@ -2,7 +2,7 @@ import { createStore,applyMiddleware ,compose} from "redux";
 
 import thunk from "redux-thunk";
 import logger from 'redux-logger'
-import rootReducer from "./redux/combinereduer/index";
+import rootReducerf from "./redux/combinereduer/index";
 
 
 const composeEnhancers =
@@ -12,7 +12,7 @@ const composeEnhancers =
 
 const middleware = [thunk]
 const enhancer = composeEnhancers(applyMiddleware(...middleware));
-const store=createStore(rootReducer, enhancer)
+const store=createStore(rootReducerf, enhancer)
 
 
 export default store

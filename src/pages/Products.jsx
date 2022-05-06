@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 import style_p from "./Products.module.css";
 import { AiOutlineRight } from "react-icons/ai";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import axios from "axios";
-import {getCartItems ,getShortItems } from "../redux/actions/index";
+import { getCartItems, getShortItems } from "../redux/actions/index";
 import { addCart, addShortList } from "../redux/actions";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
 
-   const [sortData,setSortData]=useState('')
+  const [sortData, setSortData] = useState("");
 
   const navigate = useNavigate();
   const { ctegory_type } = useParams();
@@ -20,58 +20,95 @@ const Products = () => {
   const dispatch = useDispatch();
 
   //  add data in cart
-  const handleCart = (img, title, size, prize, mrp, club_p,index) => {
-    let obj = {
-      img,
-      title,
-      size,
-      prize,
-      mrp,
-      club_p,
-    };
-    let x= products.find((ele)=> ele.id===index )
-  if(x){
-    alert("already in cart")
-  }else{
 
-    fetch("http://localhost:8080/cart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    }).then(() => {
-      dispatch(getCartItems());
-    });
-    alert("added in cart");
-  }
+//  checking data avilable or not in cart or shortlitst
+ // get to cart to check is avialbe or not in cart
+ 
+  //  checking data avialibe or not cart or shortlist
+ // get to cart to check is avialbe or not in cart
+ const items = useSelector((state) => state.cartShortReducer.cartList);
+ const items2 = useSelector((state) => state.cartShortReducer.shortList);
+ useEffect(() => {
+   dispatch(getCartItems());
+ }, []);
+ useEffect(() => {
+   dispatch(getShortItems());
+ }, []);
+
+  
+  console.log("items",items)
+
+ 
+    
+
+
+
+
+
+ 
+
+
+  const handleCart = (img, title, size, prize, mrp, club_p, id) => {
+   
+
+     console.log("index",id)
+    let x=items.find((ele) =>ele.id===id)
+
+    if(x){
+      alert("already in cart")
+    }else{
+      fetch("http://localhost:8080/cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          img,
+          title,
+          size,
+          prize,
+          mrp,
+          club_p,
+          id
+        }),
+      }).then(() => {
+        dispatch(getCartItems());
+      });
+      alert("added in cart");
+    }
   };
 
+
+
   //  add to data in shortlist
-  const handleShortList = (img, title, size, prize, mrp, club_p,index) => {
-    let obj = {
-      img,
-      title,
-      size,
-      prize,
-      mrp,
-      club_p,
-    };
-    let x= products.find((ele)=> ele.id===index )
+  const handleShortList = (img, title, size, prize, mrp, club_p, id) => {
+
+
+    let x=items2.find((ele) =>ele.id===id)
+
     if(x){
-      alert("already in shortlist")
+      alert("already in shortList")
     }else{
-    fetch("http://localhost:8080/shortList", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    }).then(() => {
-      dispatch(getShortItems(obj));
-    });
-    alert("added in shortList");
-  }
+   
+      fetch("http://localhost:8080/shortList", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          img,
+         title,
+         size,
+        prize,
+        mrp,
+        club_p,
+        id
+        }),
+      }).then(() => {
+        dispatch(getShortItems());
+      });
+      alert("added in shortList");
+    }
   };
 
   //  get data from products
@@ -82,22 +119,16 @@ const Products = () => {
         let filterData = data.filter(
           (item) => item.ctegory_type === ctegory_type
         );
-        if(sortData==='lowtohigh'){
-        
-          setProducts(filterData.sort((a,b)=> a.prize-b.prize)) 
-    
-         }else if(sortData==='hightolow'){
-          setProducts(filterData.sort((a,b)=> b.prize-a.prize))
-         }else{
+        if (sortData === "lowtohigh") {
+          setProducts(filterData.sort((a, b) => a.prize - b.prize));
+        } else if (sortData === "hightolow") {
+          setProducts(filterData.sort((a, b) => b.prize - a.prize));
+        } else {
           setProducts(filterData);
-         }
-        
+        }
       });
-       
-      console.log(sortData)
-     
-       
-      
+
+    console.log(sortData);
   }, [sortData]);
 
   //  get data from ctegory
@@ -118,16 +149,9 @@ const Products = () => {
       });
   }, []);
 
-
-  const navigater=(id)=>{
-                  
-    navigate(`${id}`)
-  }
-
-//  sorting part 
-
-  
-
+  const navigater = (id) => {
+    navigate(`${id}`);
+  };
 
 
 
@@ -145,16 +169,19 @@ const Products = () => {
 
             <div className={style_p.childsortdiv}>
               <span>Sort by:</span>
-              <select name="" id="" className={style_p.select}
-               onChange={(e)=> setSortData(e.target.value)}
+              <select
+                name=""
+                id=""
+                className={style_p.select}
+                onChange={(e) => setSortData(e.target.value)}
               >
-              <option value="" ></option>
-              <option value="lowtohigh">Low To High</option>
-              <option value="hightolow">High To Low</option>
+                <option value=""></option>
+                <option value="lowtohigh">Low To High</option>
+                <option value="hightolow">High To Low</option>
                 <option value="">New Arrivals</option>
                 <option value="">Best Seller</option>
                 <option value="">Discount</option>
-               
+
                 <option value="">Name</option>
               </select>
             </div>
