@@ -137,14 +137,16 @@ const [openedpayment,setOpenedpayment]=useState(false)
 
 //  move to short list 
 
-const handleMove=(img,title,prize,mrp,club_p,id)=>{
+const handleMove=(img,title,prize,mrp,club_p,id,q_cart)=>{
         
   let obj={
     img,
     title,
     prize,
     mrp,
-    club_p
+    club_p,
+    id,
+    q_cart
   }
    console.log(obj)
  
@@ -309,7 +311,7 @@ const handlePayment=(event)=>{
                       <div></div>
                       <span className={style_c.deletespan}>
                         <AiOutlineHeart className={style_c.icondel_heart}
-                         onClick={()=> handleMove(ele.img,ele.title,ele.prize,ele.mrp,ele.club_p,ele.id)}
+                         onClick={()=> handleMove(ele.img,ele.title,ele.prize,ele.mrp,ele.club_p,ele.id,ele.q_cart)}
                          />
                         <span
                         

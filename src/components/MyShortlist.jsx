@@ -23,14 +23,16 @@ const MyShortlist = () => {
       .then(() => dispatch(getShortItems()), console.log(id));
   };
   
-  const handleMove=(img,title,prize,mrp,club_p,id)=>{
+  const handleMove=(img,title,prize,mrp,club_p,id,q_cart)=>{
         
     let obj={
       img,
       title,
       prize,
       mrp,
-      club_p
+      club_p,
+      id,
+      q_cart
     }
      console.log(obj)
    
@@ -64,7 +66,7 @@ const MyShortlist = () => {
 
                       <div className={style_s.buttondiv}>
                         <button className={style_s.movetocartbtn}
-                         onClick={()=> handleMove(ele.img,ele.title,ele.prize,ele.mrp,ele.club_p,ele.id)}
+                         onClick={()=> handleMove(ele.img,ele.title,ele.prize,ele.mrp,ele.club_p,ele.id,ele.q_cart)}
                         >
                           MOVE TO CART
                         </button>
