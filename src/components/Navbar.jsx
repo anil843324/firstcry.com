@@ -22,8 +22,16 @@ const Navbar = () => {
     useEffect(() => {
       dispatch(getCartItems());
     }, []);
+       
 
-      console.log(items)
+    let countcart=0;
+    items.map((ele)=>(
+
+      countcart=countcart+ele.q_cart
+    )
+    
+    )
+     
   
   return (
    <>
@@ -75,7 +83,7 @@ const Navbar = () => {
                        <div className={style_nb.cart}>
                              
                                        <div className={style_nb.childcartdiv}>
-                                   <h3>{items.length}</h3>
+                                   <h3>{countcart}</h3>
                                 <CgShoppingCart className={style_nb.carticon} onClick={()=> navigate("/cart")} />
                                      </div>
                                 <span>Cart</span>

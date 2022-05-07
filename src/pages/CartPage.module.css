@@ -3,6 +3,7 @@
     background-color: #f7f7f7;
     /* height: 700px; */
    padding-top: 25px;
+   margin-top: 15px;
 }
 .smalldiv{
 
@@ -499,4 +500,21 @@
     width: 70px;
     height: 30px;
     outline: none;
+}
+
+.quantitydiv{
+    display: flex;
+    gap: 15px;
+
+}
+.quantitydiv button{
+   
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  width: 30px;
+}
+.quantity{
+    font-size: 20px;
+  font-weight: 600;
 }

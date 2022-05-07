@@ -48,9 +48,12 @@ const Products = () => {
  
 
 
-  const handleCart = (img, title, size, prize, mrp, club_p, id) => {
+  const handleCart = (img, title, size, prize, mrp, club_p, id,q_cart) => {
    
 
+
+    
+       
      console.log("index",id)
     let x=items.find((ele) =>ele.id===id)
 
@@ -69,7 +72,9 @@ const Products = () => {
           prize,
           mrp,
           club_p,
-          id
+          id,
+          q_cart
+        
         }),
       }).then(() => {
         dispatch(getCartItems());
@@ -81,7 +86,7 @@ const Products = () => {
 
 
   //  add to data in shortlist
-  const handleShortList = (img, title, size, prize, mrp, club_p, id) => {
+  const handleShortList = (img, title, size, prize, mrp, club_p, id,q_cart) => {
 
 
     let x=items2.find((ele) =>ele.id===id)
@@ -102,7 +107,8 @@ const Products = () => {
         prize,
         mrp,
         club_p,
-        id
+        id,
+        q_cart
         }),
       }).then(() => {
         dispatch(getShortItems());
@@ -242,7 +248,8 @@ const Products = () => {
                         ele.prize,
                         ele.mrp,
                         ele.club_p,
-                        ele.id
+                        ele.id,
+                        ele.q_cart
                       )
                     }
                   >
@@ -258,7 +265,8 @@ const Products = () => {
                         ele.prize,
                         ele.mrp,
                         ele.club_p,
-                        ele.id
+                        ele.id,
+                        ele.q_cart
                       )
                     }
                   >

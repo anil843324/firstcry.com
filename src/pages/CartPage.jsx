@@ -15,26 +15,17 @@ import {ImCreditCard} from "react-icons/im"
 
 //  imported from library
 import { Modal } from '@mantine/core';
+import axios from "axios";
 
 
 // end
 const CartPage = () => {
   const dispatch = useDispatch();
+  const [toggle,setToggle]=useState(true);
   const [opened, setOpened] = useState(false);
-  //  for chkar usin state
+  const [cartData,setCartData]=useState([])
   
-  const items = useSelector((state) => state.cartShortReducer.cartList);
- 
-  console.log("anil kumar"+items)
-   
-  // console.log("reducer"+items)
-  const [togle, setTogle] = useState(true);
-
-  useEffect(() => {
-    dispatch(getCartItems());
-  }, []);
-
-// form state
+  // form state
 const [state, setState] = useState("");
 const [address, setAddress] = useState("");
 const [pin, setPin] = useState("");
@@ -42,7 +33,7 @@ const [name, setName] = useState("");
 const [mnumber, setMnumber] = useState("");
 const [ftogal,setFtogal]=useState(false)
 
-const [toggle,setToggle]=useState(true);
+
 
 //  for payment page state
 const [cardNumber,setCardNumber]=useState()
@@ -50,6 +41,76 @@ const [cardName,setCardName]=useState('')
 const [cvv,setCvv]=useState();
 const [month,setMonth]=useState()
 const [year,setYear]=useState()
+  //  for chkar usin state
+  
+  useEffect(()=>{
+    fetch("http://localhost:8080/cart")
+    .then((response) => response.json())
+    .then((data) => setCartData(data));
+  
+
+  },[toggle])
+
+
+
+  
+  const items = useSelector((state) => state.cartShortReducer.cartList);
+ 
+  console.log("anil kumar",items)
+   
+  // console.log("reducer"+items)
+  const [togle, setTogle] = useState(true);
+
+  useEffect(() => {
+    dispatch(getCartItems());
+  }, [toggle]);
+
+
+
+//  for quantity product start
+
+const handleIncrement=(cart_id)=>{
+ 
+  setCartData(cartData=>
+     cartData.map((item)=>
+      cart_id===item.id ? axios.patch(`http://localhost:8080/cart/${cart_id}`,{q_cart:item.q_cart+(item.q_cart<10 ?1:0)}).then():item
+     )
+    )
+    setToggle(!toggle)
+
+    // {...item,q_cart:item.q_cart +(item.q_cart<10 ?1:0)}
+   
+    
+
+}
+const handleDecrement=(cart_id)=>{
+
+
+  setCartData(cartData=>
+    cartData.map((item)=>
+     cart_id===item.id ? axios.patch(`http://localhost:8080/cart/${cart_id}`,{q_cart:item.q_cart-(item.q_cart>1 ?1:0)}).then():item
+    )
+   )
+   setToggle(!toggle)
+ 
+  
+
+}
+
+
+
+
+
+
+
+//  for quantity product end
+
+
+
+
+
+
+
 
 const [openedpayment,setOpenedpayment]=useState(false)
   // MRP
@@ -57,11 +118,11 @@ const [openedpayment,setOpenedpayment]=useState(false)
   let discount = 0;
   let gst = 0;
   let subtotal = 0;
-  items.map((ele) => {
-    mrp = mrp + ele.mrp;
-    discount = discount + Math.round(ele.mrp - ele.prize);
-    gst = gst + Math.round((ele.prize * 12) / 100);
-    subtotal = subtotal + Math.round(gst + ele.prize);
+  cartData.map((ele) => {
+    mrp = mrp + ele.mrp*ele.q_cart
+    discount = discount + Math.round(ele.mrp - ele.prize)*ele.q_cart;
+    gst = gst + Math.round((ele.prize * 12) / 100)*ele.q_cart;
+    subtotal = subtotal + Math.round(gst + ele.prize)*ele.q_cart;
   });
 
   //  delete from
@@ -71,6 +132,7 @@ const [openedpayment,setOpenedpayment]=useState(false)
     })
       .then((response) => response.json())
       .then(() => dispatch(getCartItems()));
+      setToggle(!toggle)
   };
 
 //  move to short list 
@@ -201,7 +263,7 @@ const handlePayment=(event)=>{
             {/*  end delivery div */}
 
             {/* cart compenent */}
-            {items.map((ele, id) => {
+            {cartData.map((ele, id) => {
               return (
                 <div className={style_c.cart_container} key={id}>
                   <div className={style_c.imgdiv}>
@@ -216,6 +278,21 @@ const handlePayment=(event)=>{
                         <span className={style_c.sizespan}>
                           Fabric: <span>Cotton</span>{" "}
                         </span>
+
+                          
+                         <div className={style_c.quantitydiv}>
+                          
+                            <button onClick={()=>handleIncrement(ele.id)}>+</button>
+                              
+                              <div className={style_c.quantity} >
+                                {ele.q_cart}
+                              </div>
+
+                             <button onClick={()=>handleDecrement(ele.id)}>-</button>
+                         </div>
+
+
+
                       </div>
                     </div>
                     <hr />

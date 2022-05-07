@@ -1,6 +1,6 @@
 .BigContainer{
 
-
+ margin-top: 15px;
 }
 
 .bannerdiv{
@@ -122,8 +122,7 @@
    justify-content: center;
    flex-direction: column;
     white-space: nowrap; 
-   overflow: hidden;
-   text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .title_div p{
@@ -131,9 +130,7 @@
     margin-bottom: 5px;
 }
 .titletext{
-    /* white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; */
+    word-break: break-all;
     color: #363636;
      font-size: 15px;
    
