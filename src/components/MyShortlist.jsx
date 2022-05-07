@@ -16,7 +16,7 @@ const MyShortlist = () => {
   console.log(items);
   //  delet form list
   const handleDeletelist = (id) => {
-    fetch(`http://localhost:8080/shortList/${id}`, {
+    fetch(`https://immense-journey-49430.herokuapp.com/shortList/${id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -36,7 +36,7 @@ const MyShortlist = () => {
     }
      console.log(obj)
    
-      fetch("http://localhost:8080/cart", {
+      fetch("https://immense-journey-49430.herokuapp.com/cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

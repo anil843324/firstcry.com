@@ -44,7 +44,7 @@ const [year,setYear]=useState()
   //  for chkar usin state
   
   useEffect(()=>{
-    fetch("http://localhost:8080/cart")
+    fetch("https://immense-journey-49430.herokuapp.com/cart")
     .then((response) => response.json())
     .then((data) => setCartData(data));
   
@@ -73,7 +73,7 @@ const handleIncrement=(cart_id)=>{
  
   setCartData(cartData=>
      cartData.map((item)=>
-      cart_id===item.id ? axios.patch(`http://localhost:8080/cart/${cart_id}`,{q_cart:item.q_cart+(item.q_cart<10 ?1:0)}).then():item
+      cart_id===item.id ? axios.patch(`https://immense-journey-49430.herokuapp.com/cart/${cart_id}`,{q_cart:item.q_cart+(item.q_cart<10 ?1:0)}).then():item
      )
     )
     setToggle(!toggle)
@@ -88,7 +88,7 @@ const handleDecrement=(cart_id)=>{
 
   setCartData(cartData=>
     cartData.map((item)=>
-     cart_id===item.id ? axios.patch(`http://localhost:8080/cart/${cart_id}`,{q_cart:item.q_cart-(item.q_cart>1 ?1:0)}).then():item
+     cart_id===item.id ? axios.patch(`https://immense-journey-49430.herokuapp.com/cart/${cart_id}`,{q_cart:item.q_cart-(item.q_cart>1 ?1:0)}).then():item
     )
    )
    setToggle(!toggle)
@@ -127,7 +127,7 @@ const [openedpayment,setOpenedpayment]=useState(false)
 
   //  delete from
   const handleDelete = (id) => {
-    fetch(`http://localhost:8080/cart/${id}`, {
+    fetch(`https://immense-journey-49430.herokuapp.com/cart/${id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -150,7 +150,7 @@ const handleMove=(img,title,prize,mrp,club_p,id,q_cart)=>{
   }
    console.log(obj)
  
-    fetch("http://localhost:8080/shortList", {
+    fetch("https://immense-journey-49430.herokuapp.com/shortList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

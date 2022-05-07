@@ -60,7 +60,7 @@ const Products = () => {
     if(x){
       alert("already in cart")
     }else{
-      fetch("http://localhost:8080/cart", {
+      fetch("https://immense-journey-49430.herokuapp.com/cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,7 +95,7 @@ const Products = () => {
       alert("already in shortList")
     }else{
    
-      fetch("http://localhost:8080/shortList", {
+      fetch("https://immense-journey-49430.herokuapp.com/shortList", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +119,7 @@ const Products = () => {
 
   //  get data from products
   useEffect(() => {
-    fetch("http://localhost:8080/products")
+    fetch("https://immense-journey-49430.herokuapp.com/products")
       .then((response) => response.json())
       .then((data) => {
         let filterData = data.filter(
@@ -139,7 +139,7 @@ const Products = () => {
 
   //  get data from ctegory
   useEffect(() => {
-    fetch("http://localhost:8080/ctegory")
+    fetch("https://immense-journey-49430.herokuapp.com/ctegory")
       .then((response) => response.json())
       .then((data) => {
         setCategoryData(data);

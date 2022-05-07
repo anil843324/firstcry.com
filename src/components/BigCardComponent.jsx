@@ -6,7 +6,7 @@ const BigCardComponent = () => {
   const [categoryData, setCategoryData] = useState([]);
   const navigate= useNavigate()
   useEffect(() => {
-    fetch("http://localhost:8080/ctegory")
+    fetch("https://immense-journey-49430.herokuapp.com/ctegory")
       .then((response) => response.json())
       .then((data) => setCategoryData(data));
   }, []);

@@ -12,7 +12,7 @@ export const getItems = (listData) => ({
 //  get data for json
 export const getCartItems =  () => {
   return (dispatch) => {
-    fetch("http://localhost:8080/cart")
+    fetch("https://immense-journey-49430.herokuapp.com/cart")
       .then((response) => response.json())
       .then((data) => dispatch(getItems(data)));
   };
@@ -30,7 +30,7 @@ payload: listData,
 //  this return function
 export const getShortItems = () => {
 return (dispatch) => {
-  fetch("http://localhost:8080/shortList")
+  fetch("https://immense-journey-49430.herokuapp.com/shortList")
     .then((response) => response.json())
     .then((data) => dispatch(getShortListItems(data)));
 };

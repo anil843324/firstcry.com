@@ -32,7 +32,7 @@ const InfoPage = () => {
  //  add to data in shortlist
 
  useEffect(() => {
-   fetch(`http://localhost:8080/products/${id}`)
+   fetch(`https://immense-journey-49430.herokuapp.com/products/${id}`)
      .then((response) => response.json())
      .then((Data)=>setData(Data))
     
@@ -48,7 +48,7 @@ const InfoPage = () => {
     if(x){
       alert("already in cart")
     }else{
-      fetch("http://localhost:8080/cart", {
+      fetch("https://immense-journey-49430.herokuapp.com/cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +72,7 @@ const InfoPage = () => {
   if(x){
     alert("already in shortList")
   }else{
-   fetch("http://localhost:8080/shortList", {
+   fetch("https://immense-journey-49430.herokuapp.com/shortList", {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
