@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    box-sizing: border-box;
 }
 
 .CardContainer{
@@ -46,4 +46,60 @@
     cursor: pointer;
     
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container{
+
+        background-color: #eeeeee;
+        padding: 11px 20px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: -40px;
+    
+    }
+    
+    .CardContainer{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .premimu{
+        margin-top: 0px;
+        font-size: 20px;
+    }
+    .img{
+        height: 280px;
+        width: 280px;
+        border-radius: 6px 6px 0px 0px; 
+    }
+    .titldiv{
+        font-size: 14px;
+        margin: 0px 22px;
+    }
+    .title{
+        color: #363636;
+       
+    }
+    .ctegory_type{
+        color: #9E9E9E;
+        margin: 7px 0px 0px;
+    }
+    .Bigcard{
+         background-color: white;
+         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        height: 400px;
+        width: 280px;
+        border-radius: 6px;
+    
+    }
+    .Bigcard:hover{
+        cursor: pointer;
+        
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+
+    
 }

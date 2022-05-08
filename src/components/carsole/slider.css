@@ -104,3 +104,49 @@
 
     background-color:  rgba(255, 255, 255, 0.5);
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    :root {
+
+        --heights: 200px;
+        --widths:100%
+    }
+   
+    
+   
+    
+   
+    .prev, .next{
+        cursor: pointer;
+        z-index: 100;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 1rem;
+        margin-top: -3rem;
+        font-size: 20px;
+        font-weight: lighter;
+        color: black;
+        border-radius: 0px 3px 3px  0px ;
+        
+    }
+    .prev:hover, .next:hover{
+       
+        /* color: white; */
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        /* background-color: rgba(0, 0, 0, 0.6); */
+        transition: all 0.5s ease-in;
+    
+    }
+    .next {
+    
+        right: 0;
+        border-radius: 3px 0px 0px 3px ;
+    }
+  
+    
+
+
+}

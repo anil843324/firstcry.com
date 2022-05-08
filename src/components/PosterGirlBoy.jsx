@@ -14,6 +14,7 @@ const PosterGirlBoy = () => {
                <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_summer_01042022_03.jpg" alt="not found" />
 
              </div>
+             
              <div className={style_bg.agediv}>
 
                 <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_spring_01032022_05.jpg" alt="not found" />
@@ -101,16 +102,16 @@ const PosterGirlBoy = () => {
               </div> 
               </div>
 
-           <div className={style_bg.sportdiv}>
+           {/* <div className={style_bg.sportdiv}>
              
              <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_spring_01032022_43.jpg" alt="not found" />
              <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_spring_01032022_44.jpg" alt="not found" />
              <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_spring_01032022_45.jpg" alt="not found" />
              <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_spring_01032022_466.jpg" alt="not found" />
-             <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_spring_01032022_47.jpg" alt="not found" />
+             <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_spring_01032022_47.jpg" alt="not found" /> */}
 
 
-           </div>
+           {/* </div>
                 
                 <div className={style_bg.smallbabyCard}>
 
@@ -119,7 +120,7 @@ const PosterGirlBoy = () => {
                  <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_summer_01042022_51.jpg" alt="not found" />
                  <img src="https://cdn.fcglcdn.com/brainbees/images/cattemplate/fashion_desktop_summer_01042022_52.jpg" alt="not found" />
 
-                </div>
+                </div> */}
 
                 <div className={style_bg.watchdiv}>
 
