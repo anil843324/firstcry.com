@@ -2,6 +2,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
+import NewNavbar from './components/NewNavbar';
 
 import CartPage from './pages/CartPage';
 
@@ -12,7 +13,8 @@ function App() {
   return (
     <>
       
-       <Navbar/>
+       {/* <Navbar/> */}
+       <NewNavbar/>
       <Routes>
        <Route path="/" element={<Home/>} />
        <Route path="products/:ctegory_type" element={<Products/>} />
