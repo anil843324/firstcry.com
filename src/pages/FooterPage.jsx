@@ -55,7 +55,6 @@ const FooterPage = () => {
                         <img src={recycle} alt="not found" />
                         <span>
                           Easy Return, Replacement
-
                           <br />
                           & Exchange Policy
                           </span>
@@ -68,16 +67,13 @@ const FooterPage = () => {
                           above ₹ 699*
                           </span>
                         </div>
-
-
-                  
-                  
-                   
                    </div>
 
 
                   <div className={style_f.leftRightdivContainer}>
+
                   <div className={style_f.left} >
+
                   <div className={style_f.category1}>
                           
                           <span>CATEGORIES</span>
@@ -166,14 +162,6 @@ const FooterPage = () => {
                      <p>Testimonials</p>
                      <p>SITEMAP</p>
                      <p>LOYALTY CASH</p>
-                    
-
-
-
-
-
-
-
 
                      </div>
                      <div className={style_f.category4}>
