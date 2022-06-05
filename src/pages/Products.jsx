@@ -40,20 +40,8 @@ const Products = () => {
 
  
     
-
-
-
-
-
- 
-
-
   const handleCart = (img, title, size, prize, mrp, club_p, id,q_cart) => {
-   
-
-
-    
-       
+     
      console.log("index",id)
     let x=items.find((ele) =>ele.id===id)
 
@@ -165,15 +153,18 @@ const Products = () => {
   return (
     <>
       <div className={style_p.BigContainer}>
+
         <div className={style_p.bannerdiv}>
           <img src={bannerTitle.bannerimg} alt="bannerimg" />
         </div>
 
         <div className={style_p.filter_div}>
+
           <div className={style_p.Sort}>
             <p>{bannerTitle.title}</p>
 
             <div className={style_p.childsortdiv}>
+            
               <span>Sort by:</span>
               <select
                 name=""
